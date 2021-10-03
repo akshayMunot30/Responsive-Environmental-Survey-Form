@@ -1,50 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Environmental Survey Application</title>
-    <link rel="stylesheet" href="survey.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet">
-</head>
-<body>
-   <div class="background">
-    <div class="container">
+    <link rel="stylesheet" href="survey.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="text/javascript">
+      //   function validateEmail() {
+      //     const emailInputField = document.getElementById("email").value;
+      //     var urlEmail =
+      //       "https://emailvalidation.abstractapi.com/v1/?api_key=dc516da9c24f4a34983eb20eb4d064e6&email=" +
+      //       emailInputField;
+      //     var xmlHttp = new XMLHttpRequest();
+      //     xmlHttp.onreadystatechange = function () {
+      //       if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+      //         console.log(xmlHttp.responseText);
+      //       }
+      //     };
+      //     xmlHttp.open("GET", urlEmail, true); // true for asynchronous
+      //     xmlHttp.send(null);
+      //   }
+
+      function ValidatePhone() {
+        const phoneInputField = document.getElementById("phone").value;
+        var urlPhone =
+          "https://phonevalidation.abstractapi.com/v1/?api_key=0ef4f70cf3c14f0bb011a5c6aedbf349&phone=+91" +
+          phoneInputField;
+        console.log(phoneInputField);
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+          if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+            console.log(xmlHttp.responseText);
+          }
+        };
+
+        xmlHttp.open("GET", urlPhone, true); // true for asynchronous
+        xmlHttp.send(null);
+      }
+
+      //   function httpGet() {
+      //     validateEmail();
+      //     ValidatePhone();
+      //   }
+    </script>
+  </head>
+
+  <body>
+    <div class="background">
+      <div class="container">
         <form action="">
-            <h1 class="heading">Environmental Survey Questions</h1>
-            
-            <label>Name*:</label><br><br>
-            <input type="text" name="name" placeholder="enter your name"required><br><br>
-            <label>Gender</label><br><br>
-            <fieldset>
-                <p>Male <input type="radio"name="gender"id="male" required>Female<input type="radio" name="gender" id="female" required></p>
-            </fieldset><br>
-            <p>Email:*<br><br><input type="email"name="email"id="email" placeholder="enter your email" required></p><br>
-            <label for="phone">Enter your Mobile Number: * </label><br><br>
-            <input type="tel" id="phone" name="phone" placeholder="Mobile Number" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required><br><br>
-            <p> What kind of pollution bothers you most on a day-to-day basis?:* <br>
-                 <textarea name="address" id="address" cols="100" rows="5" placeholder="Type your answer" required></textarea> 
+          <h1 class="heading">Environmental Survey Questions</h1>
+
+          <label>Name*:</label><br /><br />
+          <input
+            type="text"
+            name="name"
+            placeholder="enter your name"
+            required
+          /><br /><br />
+          <label>Gender</label><br /><br />
+          <fieldset>
+            <p>
+              Male
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                required
+              />Female<input type="radio" name="gender" id="female" required />
             </p>
-            <p>What is the worst environmental problem do you think our planet is facing?:* <br>
-                <textarea name="address" id="address" cols="100" rows="5"placeholder="Type your answer" required></textarea> 
-           </p>
-           <p>What is the most important thing you think that will make sure the environment is healthy for future generations ?* <br>
-            <textarea name="address" id="address" cols="100" rows="5"placeholder="Type your answer" required></textarea> 
-           </p>
-           <p>What is the sustainable development according to you?:* <br>
-            <textarea name="address" id="address" cols="100" rows="5" placeholder="Type your answer"required></textarea> 
-           </p>
-           <p>What do you do with a piece of trash when there is no trash can near you?:* <br>
-            <textarea name="address" id="address" cols="100" rows="5"placeholder="Type your answer" required></textarea> 
-           </p>
-           <p>(All the above questions marked as '*' are required to be filled compulsorily)</p><br>
-           <input type="submit" value="SUBMIT">
+          </fieldset>
+          <br />
+          <p>
+            Email:*<br /><br /><input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="enter your email"
+              required
+            />
+          </p>
+          <br />
+          <label for="phone">Enter your Mobile Number: * </label><br /><br />
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Mobile Number"
+            required
+          /><br /><br />
+          <p>
+            What kind of pollution bothers you most on a day-to-day basis?:*
+            <br />
+            <textarea
+              name="address"
+              id="address"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
+          <p>
+            What is the worst environmental problem do you think our planet is
+            facing?:* <br />
+            <textarea
+              name="address"
+              id="address"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
+          <p>
+            What is the most important thing you think that will make sure the
+            environment is healthy for future generations ?* <br />
+            <textarea
+              name="address"
+              id="address"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
+          <p>
+            What is the sustainable development according to you?:* <br />
+            <textarea
+              name="address"
+              id="address"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
+          <p>
+            What do you do with a piece of trash when there is no trash can near
+            you?:* <br />
+            <textarea
+              name="address"
+              id="address"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
+          <p>
+            (All the above questions marked as '*' are required to be filled
+            compulsorily)
+          </p>
+          <br />
+          <input
+            id="submit"
+            onclick="ValidatePhone()"
+            type="button"
+            value="SUBMIT"
+          />
         </form>
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>

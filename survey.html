@@ -1,132 +1,208 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Environmental Survey Application</title>
+    <link rel="stylesheet" href="survey.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Environmental Survey Application</title>
-  <link rel="stylesheet" href="survey.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap" rel="stylesheet" />
-
-  <script type="text/javascript">
+    <script type="text/javascript">
       function ValidateEmail() {
-        const emailInputField = document.getElementById("email").value;
+        const emailInputField = document.getElementById("email");
+        const emailStr = emailInputField.value;
         var urlEmail =
           "https://emailvalidation.abstractapi.com/v1/?api_key=dc516da9c24f4a34983eb20eb4d064e6&email=" +
-          emailInputField;
-          // console.log(emailInputField);
+          emailStr;
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function () {
           if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
             console.log(xmlHttp.responseText);
+            const obj = JSON.parse(xmlHttp.responseText);
+
+            if (
+              obj.is_valid_format.value == true &&
+              obj.deliverability == "DELIVERABLE"
+            ) {
+              document.getElementById("email-validate").style.visibility =
+                "visible";
+            } else {
+              document.getElementById("email-validate").style.visibility =
+                "hidden";
+            }
           }
         };
         xmlHttp.open("GET", urlEmail, true); // true for asynchronous
         xmlHttp.send(null);
       }
 
-    function ValidatePhone() {
-      const phoneInputField = document.getElementById("phone").value;
-      var urlPhone =
-        "https://phonevalidation.abstractapi.com/v1/?api_key=0ef4f70cf3c14f0bb011a5c6aedbf349&phone=+91" + phoneInputField;
-      // console.log(phoneInputField);
-      var xmlHttp = new XMLHttpRequest();
-      xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-          console.log(xmlHttp.responseText);
-        }
-      };
+      function ValidatePhone() {
+        const phoneInputField = document.getElementById("phone").value;
+        var urlPhone =
+          "https://phonevalidation.abstractapi.com/v1/?api_key=0ef4f70cf3c14f0bb011a5c6aedbf349&phone=+91" +
+          phoneInputField;
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.onreadystatechange = function () {
+          if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+            console.log(xmlHttp.responseText);
+            const obj = JSON.parse(xmlHttp.responseText);
+            if (obj.valid == true) {
+              document.getElementById("phone-validate").style.visibility =
+                "visible";
+            } else {
+              document.getElementById("phone-validate").style.visibility =
+                "hidden";
+            }
+          }
+        };
 
-      xmlHttp.open("GET", urlPhone, true); // true for asynchronous
-      xmlHttp.send(null);
-    }
+        xmlHttp.open("GET", urlPhone, true); // true for asynchronous
+        xmlHttp.send(null);
+      }
 
-    const saveEl = document.getElementById("save-el");
-    
-    function save() {
-      console.log(saveEl)
-    }
+      function save() {
+        const saveEl = (document.getElementById("save").style.visibility =
+          "visible");
+      }
+    </script>
+  </head>
 
-      //   function httpGet() {
-      //     validateEmail();
-      //     ValidatePhone();
-      //   }
-  </script>
-</head>
+  <body>
+    <div class="background">
+      <div class="container">
+        <form action="">
+          <h1 class="heading">Environmental Survey Questions</h1>
 
-<body>
-  <div class="background">
-    <div class="container">
-      <form action="">
-        <h1 class="heading">Environmental Survey Questions</h1>
+          <p>Name *</p>
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
 
-        <p>
-          Name *
-        </p>
-        <input type="text" name="name" placeholder="Enter your name" required>
+          <p>Gender *</p>
+          <fieldset>
+            <p>
+              Male
+              <input type="radio" name="gender" id="male" required /> Female
+              <input type="radio" name="gender" id="female" required />
+            </p>
+          </fieldset>
 
-        <p>Gender *</p>
-        <fieldset>
+          <p>Email *</p>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+          <input
+            id="submit"
+            onclick="ValidateEmail()"
+            type="button"
+            value="Validate"
+            required
+          />
+          <p id="email-validate" class="email-validate">Email Verified</p>
+
+          <p for="phone">Enter your Mobile Number *</p>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Mobile Number"
+            required
+          />
+          <input
+            id="submit"
+            onclick="ValidatePhone()"
+            type="button"
+            value="Validate"
+            required
+          />
+          <p id="phone-validate" class="phone-validate">Phone Verified</p>
+
           <p>
-            Male <input type="radio" name="gender" id="male" required>
-            Female <input type="radio" name="gender" id="female" required>
+            What kind of pollution bothers you most on a day-to-day basis? *
+            <textarea
+              name="address"
+              id="q1"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
           </p>
-        </fieldset>
 
-        <p>
-          Email *
-        </p>
-        <input type="email" name="email" id="email" placeholder="Enter your email" required>
-        <input id="submit" onclick="ValidateEmail()" type="button" value="Validate" required>
-        <p id="email-validate"></p>
+          <p>
+            What is the worst environmental problem do you think our planet is
+            facing? *
+            <textarea
+              name="address"
+              id="q2"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
 
-        <p for="phone">
-          Enter your Mobile Number *
-        </p>
-        <input type="tel" id="phone" name="phone" placeholder="Mobile Number" required>
-        <input id="submit" onclick="ValidatePhone()" type="button" value="Validate" required>
-        <p id="phone-validate"></p>
+          <p>
+            What is the most important thing you think that will make sure the
+            environment is healthy for future generations? *
+            <textarea
+              name="address"
+              id="q3"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
 
-        <p>
-          What kind of pollution bothers you most on a day-to-day basis? *
-          <textarea name="address" id="q1" cols="100" rows="5" placeholder="Type your answer" required></textarea>
-        </p>
+          <p>
+            What is the sustainable development according to you? *
+            <textarea
+              name="address"
+              id="q4"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
 
-        <p>
-          What is the worst environmental problem do you think our planet is facing? *
-          <textarea name="address" id="q2" cols="100" rows="5" placeholder="Type your answer" required></textarea>
-        </p>
+          <p>
+            What do you do with a piece of trash when there is no trash can near
+            you?:* <br />
+            <textarea
+              name="address"
+              id="q5"
+              cols="100"
+              rows="5"
+              placeholder="Type your answer"
+              required
+            ></textarea>
+          </p>
 
-        <p>
-          What is the most important thing you think that will make sure the environment is healthy for future
-          generations? *
-          <textarea name="address" id="q3" cols="100" rows="5" placeholder="Type your answer" required></textarea>
-        </p>
+          <p>
+            (All the above questions marked as '*' are required to be filled
+            compulsorily)
+          </p>
 
-        <p>
-          What is the sustainable development according to you? *
-          <textarea name="address" id="q4" cols="100" rows="5" placeholder="Type your answer" required></textarea>
-        </p>
-
-        <p>
-          What do you do with a piece of trash when there is no trash can near you?:* <br>
-          <textarea name="address" id="q5" cols="100" rows="5" placeholder="Type your answer" required></textarea>
-        </p>
-
-        <p>
-          (All the above questions marked as '*' are required to be filled compulsorily)
-        </p>
-
-        <input id="submit" onclick="save()" type="button" value="SUBMIT">
-        <p id="save-el"></p>
-        
-      </form>
+          <input id="submit" onclick="save()" type="button" value="SUBMIT" />
+          <p id="save" class="submitted">Submitted Successfully</p>
+        </form>
+      </div>
     </div>
-  </div>
-</body>
-
+  </body>
 </html>

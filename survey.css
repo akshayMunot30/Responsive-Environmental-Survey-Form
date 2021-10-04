@@ -1,105 +1,113 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: auto;/*margin 15 *20 */
-    font-size: 20px;
-    padding: 8px;
-    height: 100%;
-    color: lightgreen;
-    font-family: 'Anton';
-
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: auto; /*margin 15 *20 */
+  font-size: 20px;
+  padding: 8px;
+  height: 100%;
+  color: lightgreen;
+  font-family: "Anton";
 }
-h1{
-    font-family:'Anton';
-    font-size: 50px;
+h1 {
+  font-family: "Anton";
+  font-size: 50px;
 }
-.background{
-    background-image: url("forest-img.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;  
-    background-attachment: fixed;
-    height: 100%;
-    width: 100%;
+.background {
+  background-image: url("forest-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
+  width: 100%;
 }
 
-.container{
-    background-color:rgba(0,0,0,0.8);
-    /* padding: 5px 20px 15px 20px; */
-    padding: 1em;
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width: 60%;
-    margin: auto;
-    border: 2px solid black;
-    border-radius: 5px;
+.container {
+  background-color: rgba(0, 0, 0, 0.8);
+  /* padding: 5px 20px 15px 20px; */
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  margin: auto;
+  border: 2px solid black;
+  border-radius: 5px;
+}
 
+.submitted {
+  visibility: hidden;
+}
+
+.phone-validate {
+  visibility: hidden;
+}
+
+.email-validate {
+  visibility: hidden;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="number"],
-input[type="password"],input[type="tel"],
-input[type="date"]
-{
-    width: 100%; 
-    /* padding: 12px; */
-    padding: 1em;
-    border: 2px solid white;
-    border-radius: 5px;
-    background-color: rgba(113, 207, 18, 0.705);
-    font-family: 'Times New Roman', Times, serif;
+input[type="password"],
+input[type="tel"],
+input[type="date"] {
+  width: 100%;
+  /* padding: 12px; */
+  padding: 1em;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(113, 207, 18, 0.705);
+  font-family: "Times New Roman", Times, serif;
 }
 
-textarea{
-    width: 100%; 
-    /* padding: 12px; */
-    margin-top: 20px;
-    padding: 1em;
-    border: 2px solid white;
-    border-radius: 5px;
-    background-color: rgba(113, 207, 18, 0.705);
-    font-family: 'Times New Roman', Times, serif;
+textarea {
+  width: 100%;
+  /* padding: 12px; */
+  margin-top: 20px;
+  padding: 1em;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(113, 207, 18, 0.705);
+  font-family: "Times New Roman", Times, serif;
 }
 
-fieldset{
-    background-color: rgba(113, 207, 18, 0.705);
-    border-radius: 5px;
-    border: 2px solid white;
-    color: black;
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+fieldset {
+  background-color: rgba(113, 207, 18, 0.705);
+  border-radius: 5px;
+  border: 2px solid white;
+  color: black;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
 }
 
-.heading
-{
-    text-align: center;
+.heading {
+  text-align: center;
 }
 
 ::placeholder {
-    color: black;
-    opacity: 1; 
-    font-weight: 500;
+  color: black;
+  opacity: 1;
+  font-weight: 500;
 }
 
-
-
 #submit {
-    color: white;
-    background-color: rgba(14, 117, 14, 0.877);
-    padding: 1em;
-    border:none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100px;
+  color: white;
+  background-color: rgba(14, 117, 14, 0.877);
+  padding: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100px;
 }
 
 @media screen and (max-width: 600px) {
-    .container, input[type=submit] {
-      width: 100%;
-      margin-top: 0;
-    }
+  .container,
+  input[type="submit"] {
+    width: 100%;
+    margin-top: 0;
   }
+}
